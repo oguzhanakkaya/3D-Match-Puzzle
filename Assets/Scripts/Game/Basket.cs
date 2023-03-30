@@ -1,17 +1,16 @@
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
+
 using UnityEngine;
-using UnityEngine.Rendering;
-using static UnityEditor.Progress;
-using static UnityEditor.Timeline.Actions.MenuPriority;
+
 
 public class Basket : MonoBehaviour
 {
     public static Basket Instance;
 
     private const int numberOfMaxItemInBasket = 7;
+    private const float moveTime = .2f;
 
     private List<Item> itemsInBasket=new List<Item>();
     private GameObject[] basketList= new GameObject[numberOfMaxItemInBasket];
@@ -61,20 +60,22 @@ public class Basket : MonoBehaviour
     private void ItemMoveToBasket(int i,Item item)
     {
         item.transform.localScale *= .75f;
-        StartCoroutine(CheckItemPositions());
+        StartCoroutine(CheckItemInBasketPositions());
     }
-    private IEnumerator CheckItemPositions()
+    private IEnumerator CheckItemInBasketPositions()
     {
         for(int i = 0; i < itemsInBasket.Count; i++)
         {
             if (itemsInBasket[i].transform.parent != basketList[i])
             {
-                itemsInBasket[i].transform.DOMove(basketList[i].transform.position, .2f);
+                itemsInBasket[i].transform.DOMove(basketList[i].transform.position, moveTime);
             }
         }
 
-        yield return new WaitForSeconds(.2f);
+        yield return new WaitForSeconds(moveTime);
         CheckMatch();
+        yield return new WaitForSeconds(moveTime);
+        CheckBasketIsFull();
     }
     private void CheckMatch()
     {
@@ -93,21 +94,21 @@ public class Basket : MonoBehaviour
 
             }
         }
-        CheckBasketIsFull();
+
     }
     private void MatchMove(Item leftItem,Item midItem,Item rightItem)
     {
         DG.Tweening.Sequence mySequence = DOTween.Sequence();
         mySequence.
-            Join(leftItem.transform.DOMove(midItem.gameObject.transform.position, .2f))
-            .Join(rightItem.transform.DOMove(midItem.gameObject.transform.position, .2f))
+            Join(leftItem.transform.DOMove(midItem.gameObject.transform.position, moveTime))
+            .Join(rightItem.transform.DOMove(midItem.gameObject.transform.position, moveTime))
             .OnComplete(() =>
             {
                 ItemMatched(leftItem);
                 ItemMatched(midItem);
                 ItemMatched(rightItem);
-            
-                CheckItemPositions();
+
+                CheckItemInBasketPositions();
                 levelArea.CheckAllItemsFinished();
             });
     }
