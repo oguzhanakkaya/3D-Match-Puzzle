@@ -11,10 +11,10 @@ public class Basket : MonoBehaviour
 {
     public static Basket Instance;
 
-    private List<Item> itemsInBasket=new List<Item>();
-    private List<GameObject> basketList= new List<GameObject>();
-
     private const int numberOfMaxItemInBasket = 7;
+
+    private List<Item> itemsInBasket=new List<Item>();
+    private GameObject[] basketList= new GameObject[numberOfMaxItemInBasket];
 
     private LevelArea levelArea;
     private LevelManager levelManager;
@@ -25,7 +25,7 @@ public class Basket : MonoBehaviour
     }
     private void Start()
     {
-        AddBasketsToList();
+        AddBasketsToArray();
 
         levelArea = LevelArea.Instance;
         levelManager = LevelManager.instance;
@@ -123,11 +123,11 @@ public class Basket : MonoBehaviour
         itemsInBasket.Remove(item);
         levelManager.RecycleItem(item.gameObject);
     }
-    private void AddBasketsToList()
+    private void AddBasketsToArray()
     {
-        foreach (Transform child in transform)
+        for(int i = 0; i < numberOfMaxItemInBasket; i++)
         {
-            basketList.Add(child.gameObject);
+            basketList[i] = transform.GetChild(i).gameObject;
         }
     }
     public void ClearBasketList()
