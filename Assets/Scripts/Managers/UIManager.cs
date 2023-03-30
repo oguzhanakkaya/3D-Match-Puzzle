@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,6 +9,7 @@ public class UIManager : MonoBehaviour
 {
     public GameObject winPanel, lostPanel;
     public Button restartLevelButton, nextLevelButton;
+    public TextMeshProUGUI levelIndexText;
     void Start()
     {
         GameManager.LevelCompleted += OpenWinPanel;

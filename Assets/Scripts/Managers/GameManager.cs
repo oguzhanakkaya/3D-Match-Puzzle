@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -11,6 +12,9 @@ public class GameManager : MonoBehaviour
     public static event Action LevelFailed;
     public static event Action LoadNextLevel;
     public static event Action RestartLevel;
+
+    public TextMeshProUGUI levelIndexText;
+
 
     private void Awake()
     {
@@ -35,5 +39,9 @@ public class GameManager : MonoBehaviour
     public void InvokeLoadNextLevelEvent()
     {
         LoadNextLevel.Invoke();
+    }
+    public void ChangeLevelText(int i)
+    {
+        levelIndexText.text = "Level: " + i.ToString();
     }
 }

@@ -40,10 +40,6 @@ public class Basket : MonoBehaviour
             itemsInBasket.Add(item);
             ItemMoveToBasket(0, item);
         }
-        else if (itemsInBasket.Count+1>numberOfMaxItemInBasket)  // Basket Full And No Match
-        {
-            GameManager.instance.LevelFail();
-        }
         else  // Other
         {
             for ( int i = itemsInBasket.Count-1; i>=0; i--)
@@ -65,10 +61,9 @@ public class Basket : MonoBehaviour
     private void ItemMoveToBasket(int i,Item item)
     {
         item.transform.localScale *= .75f;
-        CheckItemPositions();
-        Invoke("CheckMatch",.2f);
+        StartCoroutine(CheckItemPositions());
     }
-    private void CheckItemPositions()
+    private IEnumerator CheckItemPositions()
     {
         for(int i = 0; i < itemsInBasket.Count; i++)
         {
@@ -77,6 +72,9 @@ public class Basket : MonoBehaviour
                 itemsInBasket[i].transform.DOMove(basketList[i].transform.position, .2f);
             }
         }
+
+        yield return new WaitForSeconds(.2f);
+        CheckMatch();
     }
     private void CheckMatch()
     {
@@ -95,6 +93,7 @@ public class Basket : MonoBehaviour
 
             }
         }
+        CheckBasketIsFull();
     }
     private void MatchMove(Item leftItem,Item midItem,Item rightItem)
     {
@@ -111,8 +110,13 @@ public class Basket : MonoBehaviour
                 CheckItemPositions();
                 levelArea.CheckAllItemsFinished();
             });
-        
-       
+    }
+    private void CheckBasketIsFull()
+    {
+        if (itemsInBasket.Count >= numberOfMaxItemInBasket)
+        {
+            GameManager.instance.LevelFail();
+        }
     }
     private void ItemMatched(Item item)
     {

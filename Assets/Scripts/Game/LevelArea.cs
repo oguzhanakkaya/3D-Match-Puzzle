@@ -11,12 +11,6 @@ public class LevelArea : MonoBehaviour
     {
         Instance = this;   
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public void AddItemToList(Item item)
     {
         items.Add(item);

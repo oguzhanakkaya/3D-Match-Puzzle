@@ -90,6 +90,7 @@ using UnityEditor;
 
         public void OnLoadLevel()
         {
+            GameManager.instance.ChangeLevelText(GetLevelIndex());
             Basket.Instance.ClearBasketList();
             LevelArea.Instance.ClearList();
             
