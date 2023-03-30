@@ -134,7 +134,7 @@ namespace Code.LevelEditor
             LoadButtons();
 
             Selection.activeGameObject = levelArea;
-            SceneView.FrameLastActiveSceneView();
+            //SceneView.FrameLastActiveSceneView();
             //LevelEditorTestingDataUI.Init();
             //LevelEditorHelpersUI.Init(this);
         }

@@ -15,27 +15,37 @@ using UnityEditor;
         public static LevelManager instance;
 
         private List<GameObject> _currentObjects = new List<GameObject>();
-        private int[] levelIDs;
         private int recoveryLevelId = 2;
 
         public const string LEVELS_PATH = "Data/Levels/";
 
-        public void Initialize()
+        private LevelArea levelArea;
+
+        public void Awake()
         {
             instance = this;
+        }
+        public void Initialize()
+        {
             _levels = Resources.LoadAll<LevelScriptable>(LEVELS_PATH).ToList();
+            _levelPrefabList.Initialize(levelPoolParent);
+
+            levelArea = LevelArea.Instance;
+
+            GameManager.LoadNextLevel += OnLoadNextLevel;
+            GameManager.RestartLevel += OnLoadLevel;
 
             OnLoadLevel();
         }
 
         public void CreateLevelIDs(string levelIndexes)
         {
-            levelIDs = levelIndexes.Split(',').Select(x => int.Parse(x)).ToArray();
+           // levelIDs = levelIndexes.Split(',').Select(x => int.Parse(x)).ToArray();
         }
 
         private int GetLevelIndex()
         {
-            int level = DataUtility.Level - 1;
+            int level = DataUtility.Level;
 
         
 
@@ -46,19 +56,25 @@ using UnityEditor;
         {
             int currentLevel = GetLevelIndex();
 
-            if (currentLevel >= levelIDs.Length || currentLevel < 0)
-                return DataUtility.Level - 1;
+            if (currentLevel >= _levels.Count)
+            {
+                var lvl = currentLevel % _levels.Count;
+                return lvl-1;
+            }
+           
+            return currentLevel;
 
-            int levelID = levelIDs[currentLevel];
+           // int levelID = levelIDs[currentLevel];
 
-            if (!_levels.Exists(x => x.LevelID == levelID))
-                levelID = currentLevel;
+           // if (!_levels.Exists(x => x.LevelID == levelID))
+           //     levelID = currentLevel;
 
-            return levelID;
+           // return levelID;
         }
 
         public LevelScriptable GetLevel()
         {
+        Debug.Log(GetCurrentLevelID());
             return GetLevel(GetCurrentLevelID());
         }
 
@@ -77,7 +93,9 @@ using UnityEditor;
 
         public void OnLoadLevel()
         {
-
+            Basket.Instance.ClearBasketList();
+            LevelArea.Instance.ClearList();
+            
             LevelScriptable levelScriptable = GetLevel();
 
             if (levelScriptable == null) return;
@@ -94,6 +112,12 @@ using UnityEditor;
                 GameObject instance = GetPrefabInstanceWithID(levelScriptable.CapturedDatas[i].PrefabID).gameObject;
                 instance.transform.SetParent(_levelParent);
                 _currentObjects.Add(instance);
+
+                if (instance.TryGetComponent<Item>(out Item item))
+                {
+                    levelArea.AddItemToList(item);
+                }
+                
 
                 DataCaptureMain.SetObjectData(levelScriptable.CapturedDatas[i], instance.GetComponent<DataCapturePrefabInfo>());
                 instance.SetActive(true);

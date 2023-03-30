@@ -16,35 +16,35 @@ MonoBehaviour:
   - PrefabID: 0
     Prefab: {fileID: 4685936871764083372, guid: 57322f819c56c0d42936c11c0370ba6e, type: 3}
     IsPoolable: 1
-    PoolSize: 20
+    PoolSize: 10
     ShowOnLevelEditor: 0
   - PrefabID: 1
     Prefab: {fileID: 4472365510684849686, guid: b0b11cbd4442d49498d9bc120d2d2051, type: 3}
     IsPoolable: 1
-    PoolSize: 20
+    PoolSize: 10
     ShowOnLevelEditor: 0
   - PrefabID: 2
     Prefab: {fileID: 1345539054340481248, guid: 5c6a002626ad0704998b97037cdf2e10, type: 3}
     IsPoolable: 1
-    PoolSize: 20
+    PoolSize: 10
     ShowOnLevelEditor: 0
   - PrefabID: 3
     Prefab: {fileID: 6529504951464332240, guid: f653cac6b1f477845844be5a14fa09ec, type: 3}
     IsPoolable: 1
-    PoolSize: 20
+    PoolSize: 10
     ShowOnLevelEditor: 0
   - PrefabID: 4
     Prefab: {fileID: 5680595012770589811, guid: 870bbf0ae168c3542901af09dd6c185d, type: 3}
     IsPoolable: 1
-    PoolSize: 20
+    PoolSize: 10
     ShowOnLevelEditor: 0
   - PrefabID: 5
     Prefab: {fileID: 8755450199014937214, guid: 151c6d8fbc2b92942a2070ba35101128, type: 3}
     IsPoolable: 1
-    PoolSize: 20
+    PoolSize: 10
     ShowOnLevelEditor: 0
   - PrefabID: 6
     Prefab: {fileID: 6205611207717538327, guid: 8eb30a2289bd1244b94a522ff348360e, type: 3}
     IsPoolable: 1
-    PoolSize: 20
+    PoolSize: 10
     ShowOnLevelEditor: 0

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering;
 using static UnityEditor.Progress;
 
 public class Basket : MonoBehaviour
@@ -14,6 +15,8 @@ public class Basket : MonoBehaviour
 
     private const int numberOfMaxItemInBasket = 7;
 
+    private LevelArea levelArea;
+
     private void Awake()
     {
         Instance = this;
@@ -22,10 +25,13 @@ public class Basket : MonoBehaviour
     {
         AddBasketsToList();
 
+        levelArea = LevelArea.Instance;
     }
 
     public void AddItemToBasket(Item item)
     {
+        levelArea.RemoveItemToList(item);
+
         if (itemsInBasket.Count==0)
         {
             itemsInBasket.Add(item);
@@ -33,8 +39,7 @@ public class Basket : MonoBehaviour
         }
         else if (itemsInBasket.Count+1>numberOfMaxItemInBasket)
         {
-            Debug.Log("fail");
-            //Fail
+            GameManager.instance.LevelFail();
         }
         else
         {
@@ -104,6 +109,7 @@ public class Basket : MonoBehaviour
                 Destroy(rightItem.gameObject);
 
                 CheckItemPositions();
+                levelArea.CheckAllItemsFinished();
             });
         
        
@@ -114,5 +120,9 @@ public class Basket : MonoBehaviour
         {
             basketList.Add(child.gameObject);
         }
+    }
+    public void ClearBasketList()
+    {
+        itemsInBasket.Clear();
     }
 }
