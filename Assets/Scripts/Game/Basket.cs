@@ -64,6 +64,7 @@ public class Basket : MonoBehaviour
     }
     private void ItemMoveToBasket(int i,Item item)
     {
+        item.transform.localScale *= .75f;
         CheckItemPositions();
         Invoke("CheckMatch",.2f);
     }

@@ -16,125 +16,37 @@ MonoBehaviour:
   LevelID: 1
   levelBorder: {x: 0, y: 0}
   CapturedDatas:
-  - PrefabID: 2
+  - PrefabID: 5
     TransformData:
       CachePosition: 1
       CacheRotation: 1
       CacheScale: 1
-      Position: {x: 7.1000004, y: 2, z: -15.5}
+      Position: {x: -5.6289587, y: 3, z: -8.016926}
       Rotation: {x: -0, y: -0, z: -0, w: 1}
       Scale: {x: 10, y: 10, z: 10}
-      YOffset: 2
+      YOffset: 3
     ExampleData:
       value: 0
-  - PrefabID: 2
+  - PrefabID: 5
     TransformData:
       CachePosition: 1
       CacheRotation: 1
       CacheScale: 1
-      Position: {x: 0, y: 2, z: -15.5}
+      Position: {x: 3.8940105, y: 3, z: -22.29144}
       Rotation: {x: -0, y: -0, z: -0, w: 1}
       Scale: {x: 10, y: 10, z: 10}
-      YOffset: 2
+      YOffset: 3
     ExampleData:
       value: 0
-  - PrefabID: 2
+  - PrefabID: 5
     TransformData:
       CachePosition: 1
       CacheRotation: 1
       CacheScale: 1
-      Position: {x: -7.8, y: 2, z: -15.5}
+      Position: {x: 6.0612907, y: 3, z: -15.645603}
       Rotation: {x: -0, y: -0, z: -0, w: 1}
       Scale: {x: 10, y: 10, z: 10}
-      YOffset: 2
-    ExampleData:
-      value: 0
-  - PrefabID: 1
-    TransformData:
-      CachePosition: 1
-      CacheRotation: 1
-      CacheScale: 1
-      Position: {x: -9, y: 2, z: -8.1}
-      Rotation: {x: -0, y: -0, z: -0, w: 1}
-      Scale: {x: 10, y: 10, z: 10}
-      YOffset: 2
-    ExampleData:
-      value: 0
-  - PrefabID: 1
-    TransformData:
-      CachePosition: 1
-      CacheRotation: 1
-      CacheScale: 1
-      Position: {x: -1.6400013, y: 2, z: -8.100002}
-      Rotation: {x: -0, y: -0, z: -0, w: 1}
-      Scale: {x: 10, y: 10, z: 10}
-      YOffset: 2
-    ExampleData:
-      value: 0
-  - PrefabID: 1
-    TransformData:
-      CachePosition: 1
-      CacheRotation: 1
-      CacheScale: 1
-      Position: {x: 7.3999996, y: 2, z: -8.1}
-      Rotation: {x: -0, y: -0, z: -0, w: 1}
-      Scale: {x: 10, y: 10, z: 10}
-      YOffset: 2
-    ExampleData:
-      value: 0
-  - PrefabID: 0
-    TransformData:
-      CachePosition: 1
-      CacheRotation: 1
-      CacheScale: 1
-      Position: {x: 0.35754204, y: 2, z: 0.78294754}
-      Rotation: {x: -0, y: -0, z: -0, w: 1}
-      Scale: {x: 10, y: 10, z: 10}
-      YOffset: 2
-    ExampleData:
-      value: 0
-  - PrefabID: 0
-    TransformData:
-      CachePosition: 1
-      CacheRotation: 1
-      CacheScale: 1
-      Position: {x: -6.2, y: 2, z: 0.78295135}
-      Rotation: {x: -0, y: -0, z: -0, w: 1}
-      Scale: {x: 10, y: 10, z: 10}
-      YOffset: 2
-    ExampleData:
-      value: 0
-  - PrefabID: 0
-    TransformData:
-      CachePosition: 1
-      CacheRotation: 1
-      CacheScale: 1
-      Position: {x: 7, y: 2, z: 0.78295135}
-      Rotation: {x: -0, y: -0, z: -0, w: 1}
-      Scale: {x: 10, y: 10, z: 10}
-      YOffset: 2
-    ExampleData:
-      value: 0
-  - PrefabID: 3
-    TransformData:
-      CachePosition: 1
-      CacheRotation: 1
-      CacheScale: 1
-      Position: {x: -0.0000009536743, y: 2, z: -23.2}
-      Rotation: {x: -0, y: -0, z: -0, w: 1}
-      Scale: {x: 10, y: 10, z: 10}
-      YOffset: 2
-    ExampleData:
-      value: 0
-  - PrefabID: 3
-    TransformData:
-      CachePosition: 1
-      CacheRotation: 1
-      CacheScale: 1
-      Position: {x: 10.2, y: 2, z: -23.2}
-      Rotation: {x: -0, y: -0, z: -0, w: 1}
-      Scale: {x: 10, y: 10, z: 10}
-      YOffset: 2
+      YOffset: 3
     ExampleData:
       value: 0
   - PrefabID: 3
@@ -145,6 +57,94 @@ MonoBehaviour:
       Position: {x: -9.3, y: 2, z: -23.2}
       Rotation: {x: -0, y: -0, z: -0, w: 1}
       Scale: {x: 10, y: 10, z: 10}
-      YOffset: 2
+      YOffset: 0
+    ExampleData:
+      value: 0
+  - PrefabID: 3
+    TransformData:
+      CachePosition: 1
+      CacheRotation: 1
+      CacheScale: 1
+      Position: {x: 10.2, y: 2, z: -23.2}
+      Rotation: {x: -0, y: -0, z: -0, w: 1}
+      Scale: {x: 10, y: 10, z: 10}
+      YOffset: 0
+    ExampleData:
+      value: 0
+  - PrefabID: 3
+    TransformData:
+      CachePosition: 1
+      CacheRotation: 1
+      CacheScale: 1
+      Position: {x: -2.2960906, y: 2, z: -13.17}
+      Rotation: {x: -0, y: -0, z: -0, w: 1}
+      Scale: {x: 10, y: 10, z: 10}
+      YOffset: 0
+    ExampleData:
+      value: 0
+  - PrefabID: 1
+    TransformData:
+      CachePosition: 1
+      CacheRotation: 1
+      CacheScale: 1
+      Position: {x: 7.3999996, y: 2, z: -8.1}
+      Rotation: {x: -0, y: -0, z: -0, w: 1}
+      Scale: {x: 10, y: 10, z: 10}
+      YOffset: 0
+    ExampleData:
+      value: 0
+  - PrefabID: 1
+    TransformData:
+      CachePosition: 1
+      CacheRotation: 1
+      CacheScale: 1
+      Position: {x: -1.6400013, y: 2, z: -23.380001}
+      Rotation: {x: -0, y: -0, z: -0, w: 1}
+      Scale: {x: 10, y: 10, z: 10}
+      YOffset: 0
+    ExampleData:
+      value: 0
+  - PrefabID: 1
+    TransformData:
+      CachePosition: 1
+      CacheRotation: 1
+      CacheScale: 1
+      Position: {x: -9, y: 2, z: -8.1}
+      Rotation: {x: -0, y: -0, z: -0, w: 1}
+      Scale: {x: 10, y: 10, z: 10}
+      YOffset: 0
+    ExampleData:
+      value: 0
+  - PrefabID: 2
+    TransformData:
+      CachePosition: 1
+      CacheRotation: 1
+      CacheScale: 1
+      Position: {x: -7.8, y: 2, z: -15.5}
+      Rotation: {x: -0, y: -0, z: -0, w: 1}
+      Scale: {x: 10, y: 10, z: 10}
+      YOffset: 0
+    ExampleData:
+      value: 0
+  - PrefabID: 2
+    TransformData:
+      CachePosition: 1
+      CacheRotation: 1
+      CacheScale: 1
+      Position: {x: 0, y: 2, z: -17.880001}
+      Rotation: {x: -0, y: -0, z: -0, w: 1}
+      Scale: {x: 10, y: 10, z: 10}
+      YOffset: 0
+    ExampleData:
+      value: 0
+  - PrefabID: 2
+    TransformData:
+      CachePosition: 1
+      CacheRotation: 1
+      CacheScale: 1
+      Position: {x: 2.1039095, y: 2, z: -8.18}
+      Rotation: {x: -0, y: -0, z: -0, w: 1}
+      Scale: {x: 10, y: 10, z: 10}
+      YOffset: 0
     ExampleData:
       value: 0

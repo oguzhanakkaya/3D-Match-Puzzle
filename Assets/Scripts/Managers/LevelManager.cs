@@ -46,9 +46,7 @@ using UnityEditor;
         private int GetLevelIndex()
         {
             int level = DataUtility.Level;
-
-        
-
+            
             return level;
         }
 
@@ -56,25 +54,24 @@ using UnityEditor;
         {
             int currentLevel = GetLevelIndex();
 
-            if (currentLevel >= _levels.Count)
+
+            if (currentLevel >= _levels.Count+1)
             {
                 var lvl = currentLevel % _levels.Count;
-                return lvl-1;
+
+            if (lvl==0)
+            {
+                lvl = _levels.Count;
             }
-           
+            return lvl;
+            }
+
+
             return currentLevel;
-
-           // int levelID = levelIDs[currentLevel];
-
-           // if (!_levels.Exists(x => x.LevelID == levelID))
-           //     levelID = currentLevel;
-
-           // return levelID;
         }
 
         public LevelScriptable GetLevel()
-        {
-        Debug.Log(GetCurrentLevelID());
+        { 
             return GetLevel(GetCurrentLevelID());
         }
 
@@ -115,10 +112,12 @@ using UnityEditor;
 
                 if (instance.TryGetComponent<Item>(out Item item))
                 {
-                    levelArea.AddItemToList(item);
+                    if (levelArea!=null)
+                    {
+                        levelArea.AddItemToList(item);
+                    }
                 }
                 
-
                 DataCaptureMain.SetObjectData(levelScriptable.CapturedDatas[i], instance.GetComponent<DataCapturePrefabInfo>());
                 instance.SetActive(true);
 
