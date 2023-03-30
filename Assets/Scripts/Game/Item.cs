@@ -10,10 +10,14 @@ public class Item : MonoBehaviour
     private Rigidbody rb;
     private Collider collider;
 
-    public void Start()
+    private void OnEnable() // Reset To Start State
     {
         rb = GetComponent<Rigidbody>();
         collider = GetComponent<Collider>();
+
+        isSelected = false;
+        collider.enabled = true;
+        rb.constraints = RigidbodyConstraints.None;
     }
     public void ItemSelected()
     {

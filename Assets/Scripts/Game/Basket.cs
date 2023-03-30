@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
 using static UnityEditor.Progress;
+using static UnityEditor.Timeline.Actions.MenuPriority;
 
 public class Basket : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class Basket : MonoBehaviour
     private const int numberOfMaxItemInBasket = 7;
 
     private LevelArea levelArea;
+    private LevelManager levelManager;
 
     private void Awake()
     {
@@ -26,22 +28,23 @@ public class Basket : MonoBehaviour
         AddBasketsToList();
 
         levelArea = LevelArea.Instance;
+        levelManager = LevelManager.instance;
     }
 
     public void AddItemToBasket(Item item)
     {
         levelArea.RemoveItemToList(item);
 
-        if (itemsInBasket.Count==0)
+        if (itemsInBasket.Count==0) // No Item In Basket
         {
             itemsInBasket.Add(item);
             ItemMoveToBasket(0, item);
         }
-        else if (itemsInBasket.Count+1>numberOfMaxItemInBasket)
+        else if (itemsInBasket.Count+1>numberOfMaxItemInBasket)  // Basket Full And No Match
         {
             GameManager.instance.LevelFail();
         }
-        else
+        else  // Other
         {
             for ( int i = itemsInBasket.Count-1; i>=0; i--)
             {
@@ -70,7 +73,7 @@ public class Basket : MonoBehaviour
         {
             if (itemsInBasket[i].transform.parent != basketList[i])
             {
-                itemsInBasket[i].transform.DOLocalMove(basketList[i].transform.position, .2f);
+                itemsInBasket[i].transform.DOMove(basketList[i].transform.position, .2f);
             }
         }
     }
@@ -100,19 +103,20 @@ public class Basket : MonoBehaviour
             .Join(rightItem.transform.DOMove(midItem.gameObject.transform.position, .2f))
             .OnComplete(() =>
             {
-                itemsInBasket.Remove(leftItem);
-                itemsInBasket.Remove(midItem);
-                itemsInBasket.Remove(rightItem);
-
-                Destroy(leftItem.gameObject);
-                Destroy(midItem.gameObject);
-                Destroy(rightItem.gameObject);
-
+                ItemMatched(leftItem);
+                ItemMatched(midItem);
+                ItemMatched(rightItem);
+            
                 CheckItemPositions();
                 levelArea.CheckAllItemsFinished();
             });
         
        
+    }
+    private void ItemMatched(Item item)
+    {
+        itemsInBasket.Remove(item);
+        levelManager.RecycleItem(item.gameObject);
     }
     private void AddBasketsToList()
     {

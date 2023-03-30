@@ -184,4 +184,18 @@ using UnityEditor;
         {
             return DataUtility.Level;
         }
+
+        public void RecycleItem(GameObject obj)
+        {
+            obj.SetActive(false);
+            obj.transform.SetParent(levelPoolParent.transform);
+        }
+        public void RecycleAll()
+        {
+            foreach(Transform child in levelArea.transform)
+            {
+                child.gameObject.SetActive(false);
+                child.transform.SetParent(levelPoolParent.transform);
+            }
+        }
     }

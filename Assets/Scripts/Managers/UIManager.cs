@@ -27,11 +27,13 @@ public class UIManager : MonoBehaviour
     private void RestartButtonClicked()
     {
         lostPanel.SetActive(false);
+        LevelManager.instance.RecycleAll();
         GameManager.instance.InvokeRestartLevelEvent();
     }
     private void NextLevelButtonClicked()
     {
         winPanel.SetActive(false);
+        LevelManager.instance.RecycleAll();
         GameManager.instance.InvokeLoadNextLevelEvent();
     }
 }
