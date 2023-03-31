@@ -60,16 +60,13 @@ public class Basket : MonoBehaviour
     private void ItemMoveToBasket(int i,Item item)
     {
         item.transform.localScale *= .75f;
-        StartCoroutine(CheckItemInBasketPositions());
+        StartCoroutine(CheckItemsPositionInBaskets());
     }
-    private IEnumerator CheckItemInBasketPositions()
+    private IEnumerator CheckItemsPositionInBaskets()
     {
         for(int i = 0; i < itemsInBasket.Count; i++)
         {
-            if (itemsInBasket[i].transform.parent != basketList[i])
-            {
                 itemsInBasket[i].transform.DOMove(basketList[i].transform.position, moveTime);
-            }
         }
 
         yield return new WaitForSeconds(moveTime);
@@ -108,7 +105,7 @@ public class Basket : MonoBehaviour
                 ItemMatched(midItem);
                 ItemMatched(rightItem);
 
-                CheckItemInBasketPositions();
+                StartCoroutine(CheckItemsPositionInBaskets());
                 levelArea.CheckAllItemsFinished();
             });
     }
